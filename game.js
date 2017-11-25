@@ -23,8 +23,32 @@ Game.prototype._drawSnake = function () {
 }
 
 Game.prototype.start = function() {
-  
-  this._drawBoard();
-  this._drawSnake();
+  this._assignControlsToKeys();
+  this.snake.move();
+  window.requestAnimationFrame(this._update.bind(this));
 }
 
+Game.prototype._update = function () {
+  this._drawBoard();
+  this._drawSnake();
+  window.requestAnimationFrame(this._update.bind(this));
+}
+
+Game.prototype._assignControlsToKeys = function () {
+  document.onkeydown = function (e) {
+    switch (e.keyCode) {
+      case 38: //arrow up
+        this.snake.goUp();
+        break;
+      case 40: //arror down
+        this.snake.goDown();
+        break;
+      case 37: //arror left
+        this.snake.goLeft();
+        break;
+      case 39: //arrow right
+        this.snake.goRight();
+        break; 
+    }
+  }.bind(this);
+}

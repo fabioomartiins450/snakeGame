@@ -4,10 +4,10 @@ $(document).ready(function(){
   var ctx = canvas.getContext('2d');
 
   game = new Game({
-   rows: canvas.width / 10,
-   columns: canvas.height / 10,
-   snake: new Snake(),
-   ctx: ctx,
+    rows: canvas.width / 10,
+    columns: canvas.height / 10,
+    snake: new Snake(canvas.width / 10, canvas.height / 10),
+    ctx: ctx,
   });
 
   game.start();
