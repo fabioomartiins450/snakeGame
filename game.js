@@ -9,7 +9,7 @@ function Game(options) {
 Game.prototype._drawBoard = function () {
   for (var columnIndex = 0; columnIndex < this.columns; columnIndex++) {
     for (var rowIndex = 0; rowIndex < this.rows; rowIndex++) {
-      this.ctx.fillStyle = '#E3D4AB';
+      this.ctx.fillStyle = '#e5d6d4dd';
       this.ctx.fillRect(columnIndex * 10, rowIndex * 10, 10, 10);
     }
   }
@@ -20,7 +20,7 @@ Game.prototype._drawBoard = function () {
 
 Game.prototype._drawSnake = function () {
   this.snake.body.forEach(function (position, index) {
-    this.ctx.fillStyle = 'green';
+    this.ctx.fillStyle = 'blue';
     this.ctx.fillRect(position.column * 10, position.row * 10, 8, 8);
   }.bind(this));
 }
@@ -78,7 +78,7 @@ Game.prototype._update = function () {
   if ( this.snake.hasEatenItSelf() ) {
     this.snake.stop();
     this.stop();
-    alert('gameover');
+    alert('Você Perdeu!');
   }
   this.intervalGame = window.requestAnimationFrame(this._update.bind(this));
 }
